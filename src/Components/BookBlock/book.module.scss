@@ -1,0 +1,46 @@
+.root {
+  width: 300px;
+  min-height: 350px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 40px;
+  background-color: rgb(221, 221, 221);
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+    background-color: rgb(255, 253, 253);
+  }
+}
+
+.img {
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+span {
+  padding-top: 4px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.genre {
+  padding-bottom: 10px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 22px;
+}
+.autor {
+  font-style: italic;
+}
