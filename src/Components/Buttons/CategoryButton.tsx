@@ -15,9 +15,7 @@ function SortButton() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1" active>
-            Action
-          </Dropdown.Item>
+          <Dropdown.Item href="#/action-2">All</Dropdown.Item>
           <Dropdown.Item href="#/action-2">Art</Dropdown.Item>
           <Dropdown.Item href="#/action-3">Biography</Dropdown.Item>
           <Dropdown.Item href="#/action-4">Computers</Dropdown.Item>

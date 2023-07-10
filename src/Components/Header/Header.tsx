@@ -1,5 +1,7 @@
+import React from "react";
 import Search from "../Search/Searh";
-import SortButton from "../SortButton/SortButton";
+import CategoryButton from "../Buttons/CategoryButton";
+import SortButton from "../Buttons/SortButton";
 import styles from "./header.module.scss";
 
 const Header: React.FC = () => {
@@ -13,7 +15,7 @@ const Header: React.FC = () => {
             <div className={styles.root}>
               <b>Caterories</b>
             </div>
-            <SortButton />
+            <CategoryButton />
             <b>Sorting by</b>
             <SortButton />
           </div>

@@ -43,9 +43,9 @@
 .wrapper {
   width: 1600px;
   margin: 0 auto;
-  margin-top: 25px;
+  margin-top: 50px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+  grid-template-columns: repeat(4, minmax(200px, 0.5fr));
   grid-gap: 20px;
   box-sizing: border-box;
 }
