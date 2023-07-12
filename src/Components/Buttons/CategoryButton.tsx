@@ -1,29 +1,49 @@
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 import styles from "./sort.module.scss";
+import { useState } from "react";
+
+const categoryList = [
+  "All",
+  "Art",
+  "Biography",
+  "Computers",
+  "History",
+  "Medical",
+  "Poetry",
+];
 
 function SortButton() {
+  const [active, setActive] = useState(0);
+
+  const list = categoryList.map((item, i) => {
+    return (
+      <Dropdown.Item
+        onClick={() => setActive(i)}
+        className={active === i ? "active" : ""}
+        key={i}
+        eventKey="4"
+      >
+        {item}
+      </Dropdown.Item>
+    );
+  });
+
   return (
     <>
-      <Dropdown data-bs-theme="light">
-        <Dropdown.Toggle
-          className={styles.block}
-          id="dropdown-button-dark-example1"
-          variant="secondary"
-        >
-          All
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-          <Dropdown.Item href="#/action-2">All</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Art</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Biography</Dropdown.Item>
-          <Dropdown.Item href="#/action-4">Computers</Dropdown.Item>
-          <Dropdown.Item href="#/action-5">History</Dropdown.Item>
-          <Dropdown.Item href="#/action-6">Medical</Dropdown.Item>
-          <Dropdown.Item href="#/action-7">Poetry</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <DropdownButton
+        data-bs-theme="dark"
+        as={ButtonGroup}
+        key="secondary"
+        id="dropdown-variants-secondary"
+        variant="secondary"
+        title={list[active]}
+        className={styles.block}
+      >
+        {list}
+      </DropdownButton>
     </>
   );
 }
