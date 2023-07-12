@@ -25,13 +25,13 @@ export type BookItem = {
 
 interface BookSliceState {
   books: BookItem[];
-  status: string;
+  status: "loading" | "success" | "error";
   value: string;
 }
 
 const initialState: BookSliceState = {
   books: [],
-  status: "",
+  status: "loading",
   value: "",
 };
 

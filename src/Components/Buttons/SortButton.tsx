@@ -1,24 +1,40 @@
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
-
+import DropdownButton from "react-bootstrap/DropdownButton";
 import styles from "./sort.module.scss";
+import { useState } from "react";
+
+const sortList = ["Relevance ", "Newest"];
 
 function SortButton() {
+  const [active, setActive] = useState(0);
+
+  const list = sortList.map((item, i) => {
+    return (
+      <Dropdown.Item
+        className={active === i ? "active" : ""}
+        key={i}
+        eventKey="1"
+        onClick={() => setActive(i)}
+      >
+        {item}
+      </Dropdown.Item>
+    );
+  });
+
   return (
     <>
-      <Dropdown data-bs-theme="light">
-        <Dropdown.Toggle
-          className={styles.block}
-          id="dropdown-button-dark-example1"
-          variant="secondary"
-        >
-          Relevance
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-          <Dropdown.Item href="#/action-2">Relevance</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Newest</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <DropdownButton
+        data-bs-theme="dark"
+        as={ButtonGroup}
+        key="secondary"
+        id="dropdown-variants-secondary"
+        variant="secondary"
+        title={list[active]}
+        className={styles.block}
+      >
+        {list}
+      </DropdownButton>
     </>
   );
 }

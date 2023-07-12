@@ -21,9 +21,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className={styles.find}>
-        <span className={styles.span}>Найдено 453 книги</span>
-      </div>
+
     </>
   );
 };

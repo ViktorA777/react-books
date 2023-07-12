@@ -1,0 +1,28 @@
+.root {
+  display: flex;
+  margin-top: 25px;
+  .item {
+    background-color: rgb(221, 221, 221);
+    img {
+      padding: 25px;
+      height: 700px;
+      width: 500px;
+    }
+  }
+  .block {
+    margin-left: 25px;
+    .author {
+      font-style: italic;
+      font-size: 26px;
+    }
+    .desc {
+      width: 1000px;
+      margin-top: 30px;
+      font-size: 20px;
+    }
+    .title {
+      font-size: 26px;
+      font-weight: 700;
+    }
+  }
+}
