@@ -3,7 +3,9 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
 import styles from "./sort.module.scss";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setCategory } from "../../redux/slices/filterSlice";
+import { RootState } from "../../redux/store";
 
 const categoryList = [
   "All",
@@ -16,15 +18,17 @@ const categoryList = [
 ];
 
 function SortButton() {
-  const [active, setActive] = useState(0);
+  const dispatch = useDispatch();
+
+  const category = useSelector((state: RootState) => state.filter.category);
 
   const list = categoryList.map((item, i) => {
     return (
       <Dropdown.Item
-        onClick={() => setActive(i)}
-        className={active === i ? "active" : ""}
+        onClick={() => dispatch(setCategory(item))}
         key={i}
         eventKey="4"
+        className={category === item ? "active" : ""}
       >
         {item}
       </Dropdown.Item>
@@ -39,7 +43,7 @@ function SortButton() {
         key="secondary"
         id="dropdown-variants-secondary"
         variant="secondary"
-        title={list[active]}
+        title={category}
         className={styles.block}
       >
         {list}

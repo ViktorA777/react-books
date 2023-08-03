@@ -3,19 +3,24 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import styles from "./sort.module.scss";
 import { useState } from "react";
+import { RootState } from "../../redux/store";
 
-const sortList = ["Relevance ", "Newest"];
+import { useSelector, useDispatch } from "react-redux";
+import { setSort } from "../../redux/slices/filterSlice";
+
+const sortList = ["Relevance", "Newest"];
 
 function SortButton() {
-  const [active, setActive] = useState(0);
+  const dispatch = useDispatch();
+
+  const sort = useSelector((state: RootState) => state.filter.sort);
 
   const list = sortList.map((item, i) => {
     return (
       <Dropdown.Item
-        className={active === i ? "active" : ""}
         key={i}
         eventKey="1"
-        onClick={() => setActive(i)}
+        onClick={() => dispatch(setSort(item))}
       >
         {item}
       </Dropdown.Item>
@@ -30,7 +35,7 @@ function SortButton() {
         key="secondary"
         id="dropdown-variants-secondary"
         variant="secondary"
-        title={list[active]}
+        title={sort}
         className={styles.block}
       >
         {list}
