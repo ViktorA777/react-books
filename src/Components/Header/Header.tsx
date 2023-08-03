@@ -16,7 +16,7 @@ const Header: React.FC = () => {
               <b>Caterories</b>
             </div>
             <CategoryButton />
-            <b>Sorting by</b>
+            <b className={styles.sort}>Sorting by</b>
             <SortButton />
           </div>
         </div>
