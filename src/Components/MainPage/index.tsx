@@ -1,12 +1,14 @@
-import BookBlock from "../BookBlock/BookBlock";
+import BookBlock from "../BookBlock";
 
 import styles from "../../assets/styles/styles.module.scss";
 import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
-import { BookItem } from "../../redux/slices/bookSlice";
+import { BookItem } from "../../redux/book/types";
 import { RootState } from "../../redux/store";
 import Pagination from "../Pagination/index";
+import QuantityBooks from "../QuantityBooks";
+import Header from "../Header";
 
 const MainPage: React.FC = () => {
   const { books } = useSelector((state: RootState) => state.book);
@@ -37,8 +39,12 @@ const MainPage: React.FC = () => {
 
   return (
     <>
-      <div className={styles.wrapper}>{bookList}</div>
-      <div className={styles.root}>{button}</div>
+      <Header />
+      <QuantityBooks />
+      <>
+        <div className={styles.wrapper}>{bookList}</div>
+        <div className={styles.root}>{button}</div>
+      </>
     </>
   );
 };

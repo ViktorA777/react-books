@@ -3,18 +3,16 @@ import React, { useEffect } from "react";
 import styles from "./search.module.scss";
 import search from "../../assets/icons/search.svg";
 
-import { fetchBooks } from "../../redux/slices/bookSlice";
-import { useSelector } from "react-redux";
-import { setValue, setSearchClick } from "../../redux/slices/bookSlice";
-import { RootState, useAppDispatch } from "../../redux/store";
+import { fetchBooks } from "../../redux/book/asyncActions";
+import { setValue, setSearchClick } from "../../redux/book/book";
+import { useAppDispatch } from "../../redux/store";
+import { selectBookData } from "../../redux/book/selectors";
+import { selectFilter } from "../../redux/filter/selectors";
+import { useAppSelector } from "../../redux/store";
 
 const Search: React.FC = () => {
-  const { searchValue, searchClick } = useSelector(
-    (state: RootState) => state.book
-  );
-  const { category, sort, currentPage } = useSelector(
-    (state: RootState) => state.filter
-  );
+  const { searchValue, searchClick } = useAppSelector(selectBookData);
+  const { category, sort, currentPage } = useAppSelector(selectFilter);
 
   const dispatch = useAppDispatch();
 

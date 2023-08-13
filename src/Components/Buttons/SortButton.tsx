@@ -2,18 +2,17 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import styles from "./sort.module.scss";
-import { useState } from "react";
-import { RootState } from "../../redux/store";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setSort } from "../../redux/slices/filterSlice";
+import { setSort } from "../../redux/filter/filter";
+import { selectFilterSort } from "../../redux/filter/selectors";
 
 const sortList = ["Relevance", "Newest"];
 
 function SortButton() {
   const dispatch = useDispatch();
 
-  const sort = useSelector((state: RootState) => state.filter.sort);
+  const sort = useSelector(selectFilterSort);
 
   const list = sortList.map((item, i) => {
     return (

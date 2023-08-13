@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./book.module.scss";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 
 type BookItemProps = {
   thumbnail: string;
@@ -16,8 +14,6 @@ const BookBlock: React.FC<BookItemProps> = ({
   authors,
   categories,
 }) => {
-  const { status } = useSelector((state: RootState) => state.book);
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.root}>

@@ -4,8 +4,9 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 
 import styles from "./sort.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { setCategory } from "../../redux/slices/filterSlice";
-import { RootState } from "../../redux/store";
+import { setCategory } from "../../redux/filter/filter";
+import { selectFilterCategory } from "../../redux/filter/selectors";
+import { useAppSelector } from "../../redux/store";
 
 const categoryList = [
   "All",
@@ -20,7 +21,7 @@ const categoryList = [
 function SortButton() {
   const dispatch = useDispatch();
 
-  const category = useSelector((state: RootState) => state.filter.category);
+  const category = useAppSelector(selectFilterCategory);
 
   const list = categoryList.map((item, i) => {
     return (

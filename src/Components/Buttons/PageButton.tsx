@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Button from "react-bootstrap/Button";
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentPage } from "../../redux/slices/filterSlice";
-import { RootState } from "../../redux/store";
+import { setCurrentPage } from "../../redux/filter/filter";
+import { selectFilter } from "../../redux/filter/selectors";
 
 const PageButton: React.FC = () => {
   const dispatch = useDispatch();
-  const { currentPage } = useSelector((state: RootState) => state.filter);
+  const { currentPage } = useSelector(selectFilter);
 
   return (
     <>

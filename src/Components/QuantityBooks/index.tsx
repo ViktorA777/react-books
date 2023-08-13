@@ -1,9 +1,9 @@
 import styles from "../Header/header.module.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../redux/store";
+import { selectBookData } from "../../redux/book/selectors";
+import { useAppSelector } from "../../redux/store";
 
 const QuantityBooks = () => {
-  const { totalBooks } = useSelector((state: RootState) => state.book);
+  const { totalBooks } = useAppSelector(selectBookData);
 
   return (
     <div className={styles.find}>

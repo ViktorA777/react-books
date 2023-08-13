@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../Search/Searh";
+import Search from "../Search";
 import CategoryButton from "../Buttons/CategoryButton";
 import SortButton from "../Buttons/SortButton";
 import styles from "./header.module.scss";
