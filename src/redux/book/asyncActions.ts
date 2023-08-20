@@ -13,7 +13,7 @@ export const fetchBooks = createAsyncThunk(
   async (arg: FetchBooksArgs) => {
     const { searchValue, categoryId, sort, currentPage } = arg;
     const { data } = await axios.get(
-      `${BASE_URL}?q=${searchValue}${categoryId}&orderBy=${sort}&startIndex=${currentPage}${MAX_RESULTS}=30&key=${API_KEY}`
+      `${BASE_URL}?q=${searchValue}${categoryId}&orderBy=${sort}&startIndex=${currentPage}${MAX_RESULTS}&key=${API_KEY}`
     );
     return data;
   }
