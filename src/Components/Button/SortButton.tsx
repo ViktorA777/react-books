@@ -1,15 +1,15 @@
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import styles from "./sort.module.scss";
+import styles from "./button.module.scss";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/filter/filter";
 import { selectFilterSort } from "../../redux/filter/selectors";
 
-const sortList = ["Relevance", "Newest"];
+const SortButton: React.FC = () => {
+  const sortList = ["Relevance", "Newest"];
 
-function SortButton() {
   const dispatch = useDispatch();
 
   const sort = useSelector(selectFilterSort);
@@ -41,6 +41,6 @@ function SortButton() {
       </DropdownButton>
     </>
   );
-}
+};
 
 export default SortButton;

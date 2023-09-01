@@ -2,23 +2,24 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 
-import styles from "./sort.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import styles from "./button.module.scss";
+import { useDispatch } from "react-redux";
 import { setCategory } from "../../redux/filter/filter";
 import { selectFilterCategory } from "../../redux/filter/selectors";
 import { useAppSelector } from "../../redux/store";
 
-const categoryList = [
-  "All",
-  "Art",
-  "Biography",
-  "Computers",
-  "History",
-  "Medical",
-  "Poetry",
-];
+const Button: React.FC = () => {
+   
+  const categoryList = [
+    "All",
+    "Art",
+    "Biography",
+    "Computers",
+    "History",
+    "Medical",
+    "Poetry",
+  ];
 
-function SortButton() {
   const dispatch = useDispatch();
 
   const category = useAppSelector(selectFilterCategory);
@@ -51,6 +52,6 @@ function SortButton() {
       </DropdownButton>
     </>
   );
-}
+};
 
-export default SortButton;
+export default Button;

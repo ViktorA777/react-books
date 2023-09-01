@@ -1,7 +1,8 @@
+import CategoryButton from "../Button/CategoryButton";
+import SortButton from "../Button/SortButton";
+
 import React from "react";
 import Search from "../Search";
-import CategoryButton from "../Buttons/CategoryButton";
-import SortButton from "../Buttons/SortButton";
 import styles from "./header.module.scss";
 
 const Header: React.FC = () => {
@@ -21,7 +22,6 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

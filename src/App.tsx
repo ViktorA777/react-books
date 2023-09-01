@@ -1,10 +1,8 @@
 import React from "react";
-
 import { Routes, Route } from "react-router-dom";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-import FullBook from "./Components/FullBook";
 import MainPage from "./Components/MainPage";
+import FullBook from "./Components/Book";
 
 const App: React.FC = () => {
   return (

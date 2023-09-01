@@ -7,18 +7,17 @@ import { RootState } from "../../redux/store";
 import { useAppSelector } from "../../redux/store";
 
 export default function BasicPagination() {
-   
   const dispatch = useDispatch();
 
   const { currentPage } = useAppSelector((state: RootState) => state.filter);
 
   const onChangePage = () => {
-    dispatch(setCurrentPage(currentPage + 1));
+    dispatch(setCurrentPage(currentPage + 30));
   };
 
   return (
     <Stack spacing={2}>
-      <Pagination onChange={() => onChangePage()} count={22} size="large" />
+      <Pagination onChange={onChangePage} count={22} size="large" />
     </Stack>
   );
 }

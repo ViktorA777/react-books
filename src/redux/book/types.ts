@@ -1,8 +1,8 @@
 export type FetchBooksArgs = {
-  searchValue: string;
+  search: string;
   categoryId: string;
-  sort: string;
-  currentPage: number;
+  sortPick: string;
+  pagination: string;
 };
 
 export type BookItem = {
