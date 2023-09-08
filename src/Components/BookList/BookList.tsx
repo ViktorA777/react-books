@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectBookData } from "../../redux/book/selectors";
-import { BookItem } from "../../redux/book/types";
+import { BookItem } from "../types";
 import { Link } from "react-router-dom";
 import BookBlock from "../BookBlock";
 import styles from "../../assets/styles/styles.module.scss";

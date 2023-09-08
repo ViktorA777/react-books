@@ -1,12 +1,7 @@
 import React from "react";
 import styles from "./book.module.scss";
+import { BookItemProps } from "../types";
 
-type BookItemProps = {
-  thumbnail: string;
-  title: string;
-  authors: string;
-  categories: string;
-};
 
 const BookBlock: React.FC<BookItemProps> = ({
   thumbnail,
@@ -29,4 +24,5 @@ const BookBlock: React.FC<BookItemProps> = ({
     </div>
   );
 };
+
 export default BookBlock;

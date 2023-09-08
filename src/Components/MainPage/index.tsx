@@ -4,9 +4,9 @@ import BookList from "../BookList/BookList";
 import Error from "../Error";
 import { selectBookData } from "../../redux/book/selectors";
 import { useAppSelector } from "../../redux/store";
-import { Spinner } from "react-bootstrap";
 
-const MainPage: React.FC = () => {
+
+const MainPage = () => {
   const { status } = useAppSelector(selectBookData);
 
   return (

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 import styles from "./search.module.scss";
 import search from "../../assets/icons/search.svg";
@@ -11,7 +11,7 @@ import { useAppSelector } from "../../redux/store";
 import useBookService from "../api/BookService";
 
 const Search: React.FC = () => {
-  const { getBooks } = useBookService();
+  const { getParamsBooks } = useBookService();
 
   const { searchValue, searchClick } = useAppSelector(selectBookData);
 
@@ -21,7 +21,7 @@ const Search: React.FC = () => {
 
   useEffect(() => {
     if (searchValue) {
-      getBooks();
+      getParamsBooks();
     }
   }, [sort, currentPage, searchClick, category]);
 

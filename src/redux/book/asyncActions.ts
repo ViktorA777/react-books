@@ -1,21 +1,30 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { FetchBooksArgs } from "./types";
-import axios from "axios";
-
-export const BASE_URL = "https://www.googleapis.com/books/v1/volumes";
-
-export const API_KEY = "AIzaSyAxkRWaihssmxEyS2QOr1hVa7kIHe8jT1g";
-
-const MAX_RESULTS = "&maxResults=30";
+import { FetchBooksArgs, FetchCurrentBookArg } from "../../Components/types";
+import { bookService } from "../../Components/api/BookService";
 
 export const fetchBooks = createAsyncThunk(
   "book/fetchBooks",
   async (arg: FetchBooksArgs) => {
-    const { search, categoryId, sortPick, pagination } = arg;
-    const res = await axios.get(
-      `${BASE_URL}${search}${categoryId}${sortPick}${pagination}${MAX_RESULTS}&key=${API_KEY}`
-    );
-    console.log(res);
-    return res.data;
+    const { searchValue, categoryId, sort, currentPage } = arg;
+
+    const res = bookService.getBooks({
+      searchValue,
+      categoryId,
+      sort,
+      currentPage,
+    });
+    return res;
   }
 );
+
+export const fetchCurrentBook = createAsyncThunk(
+  "book/fetchSingleBook",
+  async (arg: FetchCurrentBookArg) => {
+    const { id } = arg;
+
+    const res = bookService.getBookById({ id });
+    return res;
+  }
+);
+
+// ${sortPick}${pagination}${MAX_RESULTS}
