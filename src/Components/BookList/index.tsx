@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
 import { selectBookData } from "../../redux/book/selectors";
-import { BookItem } from "../types";
 import { Link } from "react-router-dom";
-import BookBlock from "../BookBlock";
+import { BookBlock } from "../BookBlock";
 import styles from "../../assets/styles/styles.module.scss";
 import Pagination from "../Pagination";
+import { BookItem } from "../../components/types";
+import { SpinnerItem } from "../Spinner";
 
-const BookList: React.FC = () => {
-  const { books } = useSelector(selectBookData);
+export const BookList: React.FC = () => {
+  const { books, status } = useSelector(selectBookData);
 
   const bookList = books.map((item: BookItem) => {
     const thumbnail =
@@ -35,10 +36,14 @@ const BookList: React.FC = () => {
 
   return (
     <>
-      <div className={styles.wrapper}>{bookList}</div>
-      <div className={styles.root}>{button}</div>
+      {status === "loading" ? (
+        <SpinnerItem />
+      ) : (
+        <>
+          <div className={styles.wrapper}>{bookList}</div>
+          <div className={styles.root}>{button}</div>
+        </>
+      )}
     </>
   );
 };
-
-export default BookList;

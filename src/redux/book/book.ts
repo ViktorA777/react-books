@@ -1,14 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { BookItem, BookSliceState } from "../../Components/types";
+import {
+  AllBookResponse,
+  BookItem,
+  BookSliceState,
+} from "../../components/types";
 import { fetchBooks, fetchCurrentBook } from "./asyncActions";
 
 const initialState: BookSliceState = {
   books: [],
   singleBook: null,
-  status: "loading",
+  status: "",
   searchValue: "",
   searchClick: "",
   totalBooks: 0,
+  errorMessage: "",
 };
 
 const bookSlice = createSlice({
@@ -33,17 +38,11 @@ const bookSlice = createSlice({
     builder.addCase(fetchCurrentBook.pending, (state) => {
       state.status = "loading";
     });
-    builder.addCase(
-      fetchBooks.fulfilled,
-      (
-        state,
-        action: { payload: { totalItems: number; items: BookItem[] } }
-      ) => {
-        state.status = "success";
-        state.books = action.payload.items;
-        state.totalBooks = action.payload.totalItems;
-      }
-    );
+    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+      state.status = "success";
+      state.books = action.payload.items;
+      state.totalBooks = action.payload.totalItems;
+    });
     builder.addCase(
       fetchCurrentBook.fulfilled,
       (state, action: { payload: BookItem }) => {
@@ -51,11 +50,13 @@ const bookSlice = createSlice({
         state.singleBook = action.payload;
       }
     );
-    builder.addCase(fetchBooks.rejected, (state) => {
+    builder.addCase(fetchBooks.rejected, (state, action) => {
       state.status = "error";
+      state.errorMessage = action.error.message;
     });
-    builder.addCase(fetchCurrentBook.rejected, (state) => {
+    builder.addCase(fetchCurrentBook.rejected, (state, action) => {
       state.status = "error";
+      state.errorMessage = action.error.message;
     });
   },
 });

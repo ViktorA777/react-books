@@ -2,7 +2,7 @@ import styles from "../Header/header.module.scss";
 import { selectBookData } from "../../redux/book/selectors";
 import { useAppSelector } from "../../redux/store";
 
-const QuantityBooks = () => {
+export  const QuantityBooks = () => {
   const { totalBooks } = useAppSelector(selectBookData);
 
   return (
@@ -11,4 +11,3 @@ const QuantityBooks = () => {
     </div>
   );
 };
-export default QuantityBooks;

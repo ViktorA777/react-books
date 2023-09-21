@@ -1,21 +1,21 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import MainPage from "./Components/MainPage";
-import FullBook from "./Components/Book";
+import { MainPage } from "./components/MainPage";
+import { Book } from "./components/Book";
+import { Error } from "./components/Error";
 import { useAppSelector } from "./redux/store";
 import { selectBookData } from "./redux/book/selectors";
 
 const App: React.FC = () => {
-  const { singleBook } = useAppSelector(selectBookData);
-
-  console.log('checked', singleBook);
+  const { errorMessage } = useAppSelector(selectBookData);
 
   return (
     <div>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/book/:id" element={<FullBook />} />
+        <Route path="/book/:id" element={<Book />} />
+        <Route path="/error" element={<Error errorMessage={errorMessage} />} />
       </Routes>
     </div>
   );

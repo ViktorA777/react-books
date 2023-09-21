@@ -8,6 +8,6 @@ export const instance = axios.create({
   baseURL: BASE_URL,
   params: {
     key: API_KEY,
-    maxResults: 30,
+    maxResults: 32,
   },
 });

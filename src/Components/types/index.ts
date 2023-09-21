@@ -1,8 +1,5 @@
 export type FetchBooksArgs = {
-  searchValue: string;
-  categoryId: string;
-  sort: string;
-  currentPage: number;
+  queryString: string;
 };
 
 export type FetchCurrentBookArg = {
@@ -22,7 +19,7 @@ export type BookItem = {
   };
 };
 
-type TStatus = "loading" | "success" | "error";
+type TStatus = "" | "loading" | "success" | "error";
 
 export type BookSliceState = {
   books: BookItem[];
@@ -31,11 +28,17 @@ export type BookSliceState = {
   searchValue: string;
   searchClick: string;
   totalBooks: number;
+  errorMessage: string | undefined;
 };
 
 export type BookItemProps = {
-   thumbnail: string;
-   title: string;
-   authors: string;
-   categories: string[];
- };
+  thumbnail: string;
+  title: string;
+  authors: string;
+  categories: string[];
+};
+
+export type AllBookResponse = {
+  totalItems: number;
+  items: BookItem[];
+};

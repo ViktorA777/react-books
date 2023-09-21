@@ -1,30 +1,31 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { FetchBooksArgs, FetchCurrentBookArg } from "../../Components/types";
-import { bookService } from "../../Components/api/BookService";
+import { FetchBooksArgs, FetchCurrentBookArg } from "../../components/types";
+import { bookService } from "../../api/BookService";
 
 export const fetchBooks = createAsyncThunk(
   "book/fetchBooks",
-  async (arg: FetchBooksArgs) => {
-    const { searchValue, categoryId, sort, currentPage } = arg;
+  async (arg: FetchBooksArgs, { rejectWithValue }) => {
+    try {
+      const { queryString } = arg;
 
-    const res = bookService.getBooks({
-      searchValue,
-      categoryId,
-      sort,
-      currentPage,
-    });
-    return res;
+      const response = bookService.getBooks(queryString);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
 
 export const fetchCurrentBook = createAsyncThunk(
   "book/fetchSingleBook",
-  async (arg: FetchCurrentBookArg) => {
-    const { id } = arg;
+  async (arg: FetchCurrentBookArg, { rejectWithValue }) => {
+    try {
+      const { id } = arg;
 
-    const res = bookService.getBookById({ id });
-    return res;
+      const response = bookService.getBookById({ id });
+      return response;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
-
-// ${sortPick}${pagination}${MAX_RESULTS}

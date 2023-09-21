@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./book.module.scss";
-import { BookItemProps } from "../types";
+import { BookItemProps } from "../../components/types";
 
 
-const BookBlock: React.FC<BookItemProps> = ({
+export const BookBlock: React.FC<BookItemProps> = ({
   thumbnail,
   title,
   authors,
@@ -25,4 +25,4 @@ const BookBlock: React.FC<BookItemProps> = ({
   );
 };
 
-export default BookBlock;
+

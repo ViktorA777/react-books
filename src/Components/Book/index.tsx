@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 
 import styles from "./fullBook.module.scss";
-import SpinnerItem from "../Spinner";
+import { SpinnerItem } from "../Spinner";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { selectBookData } from "../../redux/book/selectors";
 import { fetchCurrentBook } from "../../redux/book/asyncActions";
 import { clearSingleBook } from "../../redux/book/book";
 
-const FullBook: React.FC = () => {
+export const Book: React.FC = () => {
   const { id } = useParams();
 
   const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ const FullBook: React.FC = () => {
   if (!singleBook) {
     return <SpinnerItem />;
   }
-  
+
   return (
     <div className={styles.root}>
       <div className={styles.item}>
@@ -50,4 +50,3 @@ const FullBook: React.FC = () => {
     </div>
   );
 };
-export default FullBook;
