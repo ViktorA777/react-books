@@ -10,6 +10,13 @@ import { selectFilter } from "../../redux/filter/selectors";
 import { useAppSelector } from "../../redux/store";
 import { fetchBooks } from "../../redux/book/asyncActions";
 
+type queryParams = {
+  "?q": string;
+  "+subject": string | null;
+  "&orderBy": string;
+  "&startIndex": number;
+};
+
 export const Search: React.FC = () => {
   const { searchValue, searchClick } = useAppSelector(selectBookData);
 
@@ -24,11 +31,11 @@ export const Search: React.FC = () => {
     "&startIndex": currentPage,
   };
 
-  function buildQueryString(params: any) {
+  function buildQueryString(params: queryParams) {
     let queryString = "";
 
     for (const key in params) {
-      const value = params[key];
+      const value = params[key as keyof queryParams];
 
       if (!value) continue;
 
