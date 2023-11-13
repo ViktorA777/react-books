@@ -1,24 +1,21 @@
-import React, { useEffect } from "react";
-
-import { Routes, Route, Link } from "react-router-dom";
-
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./Components/Header/Header";
-import styles from "./assets/styles/styles.module.scss";
-
-import FullBook from "./Components/FullBook/FullBoox";
-import QuantityBooks from "./Components/QuantityBooks/QuantityBooks";
-import PageButton from "./Components/Buttons/PageButton";
-import MainPage from "./Components/MainPage/MainPage";
+import { MainPage } from "./components/MainPage";
+import { Book } from "./components/Book";
+import { Error } from "./components/Error";
+import { useAppSelector } from "./redux/store";
+import { selectBookData } from "./redux/book/selectors";
 
 const App: React.FC = () => {
+  const { errorMessage } = useAppSelector(selectBookData);
+
   return (
     <div>
-      <Header />
-      <QuantityBooks />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/book/:id" element={<FullBook />} />
+        <Route path="/book/:id" element={<Book />} />
+        <Route path="/error" element={<Error errorMessage={errorMessage} />} />
       </Routes>
     </div>
   );

@@ -1,23 +1,14 @@
 import React from "react";
 import styles from "./book.module.scss";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { BookItemProps } from "../../components/types";
 
-type BookItemProps = {
-  thumbnail: string;
-  title: string;
-  authors: string;
-  categories: string;
-};
 
-const BookBlock: React.FC<BookItemProps> = ({
+export const BookBlock: React.FC<BookItemProps> = ({
   thumbnail,
   title,
   authors,
   categories,
 }) => {
-  const { status } = useSelector((state: RootState) => state.book);
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.root}>
@@ -33,4 +24,5 @@ const BookBlock: React.FC<BookItemProps> = ({
     </div>
   );
 };
-export default BookBlock;
+
+
